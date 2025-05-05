@@ -39,7 +39,7 @@ const Sidenavbar = () => {
       </div>
 
       {/* Mobile Top Navbar */}
-      <div className="md:hidden w-full bg-gray-900 text-white p-4 flex items-center justify-between fixed top-0 left-0 z-50 border-b border-gray-700">
+      <div className="md:hidden w-full z-51 bg-gray-900 text-white p-4 flex items-center justify-between fixed top-0 left-0 border-b border-gray-700">
         <div className="flex items-center gap-3">
           <Image src="/logo.svg" alt="FixMyGully logo" width={24} height={24} />
           <span className="font-bold text-yellow-400">FixMyGully</span>

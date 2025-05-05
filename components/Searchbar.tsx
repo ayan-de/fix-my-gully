@@ -1,6 +1,7 @@
 const Searchbar = () => {
   return (
-    <form className="max-w-3/4 md:left-40 md:max-w-1/2 md:top-0 lg:max-w-md mx-auto relative top-8 lg:top-0">
+    // <form className="w-full max-w-xl mx-auto mt-6 px-4 ">
+    <form className="w-full max-w-xl mx-auto mt-6 px-4 md:ml-64 z-50">
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
