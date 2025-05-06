@@ -3,8 +3,14 @@
 import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
-
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { useState } from "react";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMapEvents,
+} from "react-leaflet";
 import { Icon, divIcon, point } from "leaflet";
 import { v4 as uuidv4 } from "uuid";
 import MarkerClusterGroup from "react-leaflet-cluster";
@@ -33,13 +39,27 @@ const createClusterCustomIcon = function (cluster: Cluster) {
   });
 };
 
-const markers: MarkerType[] = [
-  { id: uuidv4(), geocode: [22.5016, 88.3209], popUp: "Behala" },
-  { id: uuidv4(), geocode: [22.5958, 88.2636], popUp: "Howrah" },
-  { id: uuidv4(), geocode: [22.8963, 88.2461], popUp: "Hoogly" },
-];
+export default function Map() {
+  const [markers, setMarkers] = useState<MarkerType[]>([
+    { id: uuidv4(), geocode: [22.5016, 88.3209], popUp: "Behala" },
+    { id: uuidv4(), geocode: [22.5958, 88.2636], popUp: "Howrah" },
+    { id: uuidv4(), geocode: [22.8963, 88.2461], popUp: "Hoogly" },
+  ]);
 
-export default function MapClient() {
+  function AddMarkerOnClick() {
+    useMapEvents({
+      click(e) {
+        const newMarker: MarkerType = {
+          id: uuidv4(),
+          geocode: [e.latlng.lat, e.latlng.lng],
+          popUp: "Custom Location",
+        };
+        setMarkers((prev) => [...prev, newMarker]);
+      },
+    });
+    return null;
+  }
+
   return (
     <div className="flex-1 md:ml-64 overflow-hidden border absolute">
       <MapContainer
@@ -63,6 +83,7 @@ export default function MapClient() {
             </Marker>
           ))}
         </MarkerClusterGroup>
+        <AddMarkerOnClick />
       </MapContainer>
     </div>
   );
