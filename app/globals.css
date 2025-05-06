@@ -29,4 +29,10 @@ body {
   z-index: 1;
   height: 100vh;
   width: 1640px;
+  /* width: 100%; */
 }
+
+/* .map{
+  width: 1640px;
+  height: 100vh;
+} */

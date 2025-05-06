@@ -6,9 +6,6 @@ import dynamic from "next/dynamic";
 // load the map only on client
 const Map = dynamic(() => import("./Map"), {
   ssr: false,
-  loading: () => <p>Loading map...</p>,
 });
 
-export default function MapWrapper() {
-  return <Map />;
-}
+export default Map;
