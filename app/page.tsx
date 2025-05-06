@@ -1,5 +1,5 @@
 // import BorderLayout from "@/components/BorderLayout";
-// "use client";
+"use client";
 
 import Map from "@/components/Map";
 import Searchbar from "@/components/Searchbar";
