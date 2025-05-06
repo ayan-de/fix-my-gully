@@ -28,8 +28,8 @@ body {
 .leaflet-container{
   z-index: 1;
   height: 100vh;
-  width: 1640px;
-  /* width: 100%; */
+  /* width: 1700px; */
+  width: 100%;
 }
 .markercluster-map {
   height: 100vh;
