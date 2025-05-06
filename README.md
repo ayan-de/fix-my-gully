@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🧹 FixMyGully
 
-## Getting Started
+FixMyGully is a civic issue reporting web app that empowers citizens to report problems like blocked drains, garbage dumps, and waterlogging in their neighborhoods. It promotes transparency and active civic engagement.
 
-First, run the development server:
+---
+
+## 🌐 Live Demo
+
+[Visit Site](https://your-live-site-link.com)(Not working- Still in Progress)
+
+---
+
+## 📸 Screenshots
+
+### 🖥️ Large Screen View (Desktop)
+
+![Large Screen](https://your-image-url.com/large.png)
+
+### 💻 Medium Screen View (Tablet)
+
+![Medium Screen](https://your-image-url.com/medium.png)
+
+### 📱 Small Screen View (Mobile)
+
+![Small Screen](https://your-image-url.com/small.png)
+
+---
+
+## 🚀 Features
+
+- 🗺️ Interactive Map to report location-based issues
+- 📸 Upload images of the issue
+- 📍 Auto-location detection (GPS or manual pin)
+- 🧾 Real-time issue list with filters
+- 📬 Admin dashboard (planned)
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js + React + Tailwind CSS
+- **Maps**: React Leaflet + OpenStreetMap
+- **Database**: PostgreSQL (via Hasura)
+- **Auth**: Supabase Auth (planned)
+- **Hosting**: Vercel
+
+---
+
+## 🧰 Getting Started
 
 ```bash
+git clone https://github.com/your-username/fixmygully.git
+cd fixmygully
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
