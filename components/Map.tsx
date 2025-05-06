@@ -1,14 +1,15 @@
 "use client";
 
 import "leaflet/dist/leaflet.css";
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { Icon } from "leaflet";
+import { v4 as uuidv4 } from "uuid";
 
 type MarkerType = {
+  id: string;
   geocode: [number, number];
   popUp: string;
 };
-
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import { Icon } from "leaflet";
 
 // create custom icon
 const customIcon = new Icon({
@@ -20,14 +21,17 @@ const customIcon = new Icon({
 // markers
 const markers: MarkerType[] = [
   {
+    id: uuidv4(),
     geocode: [22.5016, 88.3209],
     popUp: "Behala",
   },
   {
+    id: uuidv4(),
     geocode: [22.5958, 88.2636],
     popUp: "Howrah",
   },
   {
+    id: uuidv4(),
     geocode: [22.8963, 88.2461],
     popUp: "Hoogly",
   },
@@ -46,8 +50,8 @@ const Map = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {markers.map((marker, index) => (
-          <Marker key={index} position={marker.geocode} icon={customIcon}>
+        {markers.map((marker) => (
+          <Marker key={marker.id} position={marker.geocode} icon={customIcon}>
             <Popup>{marker.popUp}</Popup>
           </Marker>
         ))}
