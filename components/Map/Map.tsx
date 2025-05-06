@@ -3,7 +3,7 @@
 import "leaflet/dist/leaflet.css";
 import "leaflet.markercluster/dist/MarkerCluster.css";
 import "leaflet.markercluster/dist/MarkerCluster.Default.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -43,6 +43,10 @@ const customIcon = new Icon({
   iconSize: [38, 38],
 });
 
+const userLocationIcon = new Icon({
+  iconUrl: "/mylocation.png",
+  iconSize: [28, 38],
+});
 // custom cluster icon
 const createClusterCustomIcon = function (cluster: Cluster) {
   return divIcon({
@@ -93,6 +97,9 @@ export default function Map() {
     { lat: number; lng: number; label: string; id: string }[]
   >([]);
   const [markMode, setMarkMode] = useState(false);
+  const [userLocation, setUserLocation] = useState<[number, number] | null>(
+    null
+  );
 
   const addMarker = (lat: number, lng: number) => {
     setMarkers((prev) => [
@@ -114,6 +121,22 @@ export default function Map() {
       return next;
     });
   };
+
+  useEffect(() => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          setUserLocation([latitude, longitude]);
+        },
+        (error) => {
+          console.error("Geolocation error:", error);
+        }
+      );
+    } else {
+      console.warn("Geolocation not supported by this browser.");
+    }
+  }, []);
 
   return (
     <div className={"flex-1 md:ml-64 overflow-hidden border absolute inset-0"}>
@@ -147,7 +170,7 @@ export default function Map() {
 
       <MapContainer
         className="markercluster-map"
-        center={[22.5744, 88.3629]}
+        center={userLocation ?? [22.5744, 88.3629]}
         zoom={13}
         scrollWheelZoom={true}
       >
@@ -155,6 +178,12 @@ export default function Map() {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
+        {userLocation && (
+          <Marker position={userLocation} icon={userLocationIcon}>
+            <Popup>You are here</Popup>
+          </Marker>
+        )}
 
         <MarkerClusterGroup
           chunkedLoading
