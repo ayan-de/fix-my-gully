@@ -51,7 +51,7 @@ const Sidenavbar = () => {
 
       {/* Mobile Dropdown Menu */}
       {open && (
-        <div className="absolute top-16 left-0 w-full bg-gray-800 text-white p-4 flex flex-col gap-4 z-40 md:hidden">
+        <div className="absolute z-51 top-16 left-0 w-full bg-gray-800 text-white p-4 flex flex-col gap-4  md:hidden">
           <Link
             href="/about"
             className="flex items-center gap-2 hover:text-yellow-300"
