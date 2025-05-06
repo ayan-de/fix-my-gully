@@ -21,10 +21,10 @@ const Map = () => {
         />
         <Marker position={[22.5016, 88.3209]}>
           <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
+            This is. <br /> Behala.
           </Popup>
         </Marker>
-      </MapContainer>{" "}
+      </MapContainer>
     </div>
   );
 };
