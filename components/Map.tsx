@@ -2,6 +2,11 @@
 
 import "leaflet/dist/leaflet.css";
 
+type MarkerType = {
+  geocode: [number, number];
+  popUp: string;
+};
+
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 
@@ -12,9 +17,23 @@ const customIcon = new Icon({
   iconSize: [38, 38], // size of the icon
 });
 
-const Map = () => {
-  // markers
+// markers
+const markers: MarkerType[] = [
+  {
+    geocode: [22.5016, 88.3209],
+    popUp: "Behala",
+  },
+  {
+    geocode: [22.5958, 88.2636],
+    popUp: "Howrah",
+  },
+  {
+    geocode: [22.8963, 88.2461],
+    popUp: "Hoogly",
+  },
+];
 
+const Map = () => {
   return (
     // <div className="border w-full h-full">
     <div className="flex-1 md:ml-64 overflow-hidden border absolute ">
@@ -27,11 +46,11 @@ const Map = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[22.5016, 88.3209]} icon={customIcon}>
-          <Popup>
-            This is. <br /> Behala.
-          </Popup>
-        </Marker>
+        {markers.map((marker, index) => (
+          <Marker key={index} position={marker.geocode} icon={customIcon}>
+            <Popup>{marker.popUp}</Popup>
+          </Marker>
+        ))}
       </MapContainer>
     </div>
   );
