@@ -14,6 +14,7 @@ import {
 import { Icon, divIcon, point } from "leaflet";
 import { v4 as uuidv4 } from "uuid";
 import MarkerClusterGroup from "react-leaflet-cluster";
+import Cards from "../Cards";
 
 interface Cluster {
   getChildCount: () => number;
@@ -165,7 +166,14 @@ export default function Map() {
               position={[marker.lat, marker.lng]}
               icon={customIcon}
             >
-              <Popup>{marker.label}</Popup>
+              <Popup minWidth={250}>
+                <Cards
+                  imageUrl="/dirtyImage.webp"
+                  description={marker.label}
+                  likes={100}
+                  comments={100}
+                />
+              </Popup>
             </Marker>
           ))}
         </MarkerClusterGroup>
