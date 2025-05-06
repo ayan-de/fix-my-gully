@@ -12,6 +12,7 @@
     "@changey/react-leaflet-markercluster": "^4.0.0-rc1",
     "@react-leaflet/core": "^3.0.0",
     "leaflet": "^1.9.4",
+    "leaflet.markercluster": "^1.5.3",
     "lucide-react": "^0.507.0",
     "next": "15.3.1",
     "react": "^19.0.0",

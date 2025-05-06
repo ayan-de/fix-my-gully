@@ -20,14 +20,15 @@
     ],
     "paths": {
       "@/*": ["./*"]
-    }
+    },
+    "typeRoots": ["./node_modules/@types", "./types"]
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "components/Map/index.js"
+    "components/Map/page.js"
   ],
   "exclude": ["node_modules"]
 }

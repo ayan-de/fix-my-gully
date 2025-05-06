@@ -1,0 +1,53 @@
+"use client";
+
+import "leaflet/dist/leaflet.css";
+import "leaflet.markercluster/dist/MarkerCluster.css";
+import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+
+import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import MarkerClusterGroup from "@changey/react-leaflet-markercluster";
+import { Icon } from "leaflet";
+import { v4 as uuidv4 } from "uuid";
+
+type MarkerType = {
+  id: string;
+  geocode: [number, number];
+  popUp: string;
+};
+
+const customIcon = new Icon({
+  iconUrl: "/marker.png",
+  iconSize: [38, 38],
+});
+
+const markers: MarkerType[] = [
+  { id: uuidv4(), geocode: [22.5016, 88.3209], popUp: "Behala" },
+  { id: uuidv4(), geocode: [22.5958, 88.2636], popUp: "Howrah" },
+  { id: uuidv4(), geocode: [22.8963, 88.2461], popUp: "Hoogly" },
+];
+
+export default function MapClient() {
+  return (
+    <div className="w-full h-screen">
+      <MapContainer
+        center={[22.5744, 88.3629]}
+        zoom={13}
+        scrollWheelZoom={true}
+        style={{ height: "100%", width: "100%" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+
+        <MarkerClusterGroup chunkedLoading>
+          {markers.map((marker) => (
+            <Marker key={marker.id} position={marker.geocode} icon={customIcon}>
+              <Popup>{marker.popUp}</Popup>
+            </Marker>
+          ))}
+        </MarkerClusterGroup>
+      </MapContainer>
+    </div>
+  );
+}
