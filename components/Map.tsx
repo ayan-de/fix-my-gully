@@ -3,6 +3,14 @@
 import "leaflet/dist/leaflet.css";
 
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import { Icon } from "leaflet";
+
+// create custom icon
+const customIcon = new Icon({
+  // iconUrl: "https://cdn-icons-png.flaticon.com/512/447/447031.png",
+  iconUrl: "/logo.svg",
+  iconSize: [38, 38], // size of the icon
+});
 
 const Map = () => {
   // markers
@@ -19,7 +27,7 @@ const Map = () => {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={[22.5016, 88.3209]}>
+        <Marker position={[22.5016, 88.3209]} icon={customIcon}>
           <Popup>
             This is. <br /> Behala.
           </Popup>

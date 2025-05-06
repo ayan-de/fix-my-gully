@@ -14,15 +14,11 @@ FixMyGully is a civic issue reporting web app that empowers citizens to report p
 
 ### 🖥️ Large Screen View (Desktop)
 
-![Large Screen](https://your-image-url.com/large.png)
-
-### 💻 Medium Screen View (Tablet)
-
-![Medium Screen](https://your-image-url.com/medium.png)
+![Large Screen](/public/screenshots/desktop.png)
 
 ### 📱 Small Screen View (Mobile)
 
-![Small Screen](https://your-image-url.com/small.png)
+![Small Screen](/public/screenshots/mobile.png)
 
 ---
 
