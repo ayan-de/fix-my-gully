@@ -15,6 +15,7 @@ import { Icon, divIcon, point } from "leaflet";
 import { v4 as uuidv4 } from "uuid";
 import MarkerClusterGroup from "react-leaflet-cluster";
 import Cards from "../Cards";
+import PinMarkerDialog from "@/components/PinMarkerDialog";
 
 interface Cluster {
   getChildCount: () => number;
@@ -101,17 +102,30 @@ export default function Map() {
     null
   );
 
-  const addMarker = (lat: number, lng: number) => {
-    setMarkers((prev) => [
-      ...prev,
-      {
-        lat,
-        lng,
-        label: "Custom Marker",
-        id: uuidv4(),
-      },
-    ]);
-    setMarkMode(false); // auto-disable after one marker (optional)
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [pendingCoords, setPendingCoords] = useState<{
+    lat: number;
+    lng: number;
+  } | null>(null);
+
+  const handleMarkerClick = (lat: number, lng: number) => {
+    setPendingCoords({ lat, lng });
+    setDialogOpen(true);
+  };
+
+  const handleDialogSave = (label: string) => {
+    if (pendingCoords) {
+      setMarkers((prev) => [
+        ...prev,
+        {
+          ...pendingCoords,
+          label,
+          id: uuidv4(),
+        },
+      ]);
+    }
+    setDialogOpen(false);
+    setMarkMode(false);
   };
 
   const toggleMarkMode = () => {
@@ -206,8 +220,14 @@ export default function Map() {
             </Marker>
           ))}
         </MarkerClusterGroup>
-        <ClickHandler markMode={markMode} onMarkerAdded={addMarker} />
+        {/* <ClickHandler markMode={markMode} onMarkerAdded={addMarker} /> */}
+        <ClickHandler markMode={markMode} onMarkerAdded={handleMarkerClick} />
       </MapContainer>
+      <PinMarkerDialog
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        onSave={handleDialogSave}
+      />
     </div>
   );
 }
