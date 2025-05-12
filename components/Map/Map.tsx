@@ -26,19 +26,6 @@ interface ClickHandlerProps {
   onMarkerAdded: (lat: number, lng: number) => void;
 }
 
-// type MarkerType = {
-//   id: string;
-//   geocode: [number, number];
-//   popUp: string;
-// };
-
-// type MarkerData = {
-//   id: string;
-//   lat: number;
-//   lng: number;
-//   label: string;
-// };
-
 const customIcon = new Icon({
   iconUrl: "/marker.png",
   iconSize: [38, 38],
@@ -74,26 +61,6 @@ function ClickHandler({ markMode, onMarkerAdded }: ClickHandlerProps) {
 }
 
 export default function Map() {
-  // const [markers, setMarkers] = useState<MarkerType[]>([
-  //   { id: uuidv4(), geocode: [22.5016, 88.3209], popUp: "Behala" },
-  //   { id: uuidv4(), geocode: [22.5958, 88.2636], popUp: "Howrah" },
-  //   { id: uuidv4(), geocode: [22.8963, 88.2461], popUp: "Hoogly" },
-  // ]);
-
-  // function AddMarkerOnClick() {
-  //   useMapEvents({
-  //     click(e) {
-  //       const newMarker: MarkerType = {
-  //         id: uuidv4(),
-  //         geocode: [e.latlng.lat, e.latlng.lng],
-  //         popUp: "Custom Location",
-  //       };
-  //       setMarkers((prev) => [...prev, newMarker]);
-  //     },
-  //   });
-  //   return null;
-  // }
-
   const [markers, setMarkers] = useState<
     { lat: number; lng: number; label: string; id: string }[]
   >([]);
@@ -220,7 +187,6 @@ export default function Map() {
             </Marker>
           ))}
         </MarkerClusterGroup>
-        {/* <ClickHandler markMode={markMode} onMarkerAdded={addMarker} /> */}
         <ClickHandler markMode={markMode} onMarkerAdded={handleMarkerClick} />
       </MapContainer>
       <PinMarkerDialog
