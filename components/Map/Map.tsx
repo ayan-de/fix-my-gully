@@ -62,7 +62,13 @@ function ClickHandler({ markMode, onMarkerAdded }: ClickHandlerProps) {
 
 export default function Map() {
   const [markers, setMarkers] = useState<
-    { lat: number; lng: number; label: string; id: string }[]
+    {
+      lat: number;
+      lng: number;
+      label: string;
+      imageUrl: string | null;
+      id: string;
+    }[]
   >([]);
   const [markMode, setMarkMode] = useState(false);
   const [userLocation, setUserLocation] = useState<[number, number] | null>(
@@ -80,13 +86,14 @@ export default function Map() {
     setDialogOpen(true);
   };
 
-  const handleDialogSave = (label: string) => {
+  const handleDialogSave = (label: string, imageUrl: string | null) => {
     if (pendingCoords) {
       setMarkers((prev) => [
         ...prev,
         {
           ...pendingCoords,
           label,
+          imageUrl,
           id: uuidv4(),
         },
       ]);
@@ -178,7 +185,7 @@ export default function Map() {
             >
               <Popup minWidth={250}>
                 <Cards
-                  imageUrl="/dirtyImage.webp"
+                  imageUrl={marker.imageUrl || "/dirtyImage.webp"}
                   description={marker.label}
                   likes={100}
                   comments={100}

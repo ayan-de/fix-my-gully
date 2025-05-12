@@ -17,7 +17,7 @@ import Image from "next/image";
 type PinMarkerDialogProps = {
   open: boolean;
   onClose: () => void;
-  onSave: (label: string) => void;
+  onSave: (label: string, previewUrl: string | null) => void;
 };
 
 export default function PinMarkerDialog({
@@ -26,10 +26,21 @@ export default function PinMarkerDialog({
   onSave,
 }: PinMarkerDialogProps) {
   const [label, setLabel] = useState("");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
   const handleSave = () => {
-    onSave(label);
+    onSave(label, previewUrl);
     setLabel("");
+    setPreviewUrl(null);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setSelectedFile(file);
+      setPreviewUrl(URL.createObjectURL(file));
+    }
   };
 
   return (
@@ -58,8 +69,20 @@ export default function PinMarkerDialog({
         />
         <div className="grid w-full max-w-sm items-center gap-1.5">
           <Label htmlFor="picture">Picture</Label>
-          <Input id="picture" type="file" />
+          <Input id="picture" type="file" onChange={handleFileChange} />
         </div>
+        {/* ✅ Image preview */}
+        {previewUrl && (
+          <div className="mt-4 flex justify-center">
+            <Image
+              src={previewUrl}
+              alt="Preview"
+              width={200}
+              height={150}
+              className="rounded-lg object-contain"
+            />
+          </div>
+        )}
         <DialogFooter>
           <Button onClick={handleSave}>Save</Button>
         </DialogFooter>
