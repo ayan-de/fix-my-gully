@@ -1,8 +1,8 @@
 "use client";
 
 import "leaflet/dist/leaflet.css";
-import "leaflet.markercluster/dist/MarkerCluster.css";
-import "leaflet.markercluster/dist/MarkerCluster.Default.css";
+// import "leaflet.markercluster/dist/MarkerCluster.css";
+// import "leaflet.markercluster/dist/MarkerCluster.Default.css";
 import { useState, useEffect } from "react";
 import {
   MapContainer,
@@ -13,13 +13,13 @@ import {
 } from "react-leaflet";
 import { Icon, divIcon, point } from "leaflet";
 import { v4 as uuidv4 } from "uuid";
-import MarkerClusterGroup from "react-leaflet-cluster";
+// import MarkerClusterGroup from "react-leaflet-cluster";
 import Cards from "../Cards";
 import PinMarkerDialog from "@/components/PinMarkerDialog";
 
-interface Cluster {
-  getChildCount: () => number;
-}
+// interface Cluster {
+//   getChildCount: () => number;
+// }
 
 interface ClickHandlerProps {
   markMode: boolean;
@@ -36,13 +36,13 @@ const userLocationIcon = new Icon({
   iconSize: [28, 38],
 });
 // custom cluster icon
-const createClusterCustomIcon = function (cluster: Cluster) {
-  return divIcon({
-    html: `<span class="cluster-icon">${cluster.getChildCount()}</span>`,
-    className: "custom-marker-cluster",
-    iconSize: point(33, 33, true),
-  });
-};
+// const createClusterCustomIcon = function (cluster: Cluster) {
+//   return divIcon({
+//     html: `<span class="cluster-icon">${cluster.getChildCount()}</span>`,
+//     className: "custom-marker-cluster",
+//     iconSize: point(33, 33, true),
+//   });
+// };
 
 function ClickHandler({ markMode, onMarkerAdded }: ClickHandlerProps) {
   useMapEvents({
@@ -173,27 +173,27 @@ export default function Map() {
           </Marker>
         )}
 
-        <MarkerClusterGroup
+        {/* <MarkerClusterGroup
           chunkedLoading
           iconCreateFunction={createClusterCustomIcon}
-        >
-          {markers.map((marker) => (
-            <Marker
-              key={marker.id}
-              position={[marker.lat, marker.lng]}
-              icon={customIcon}
-            >
-              <Popup minWidth={250}>
-                <Cards
-                  imageUrl={marker.imageUrl || "/dirtyImage.webp"}
-                  description={marker.label}
-                  likes={100}
-                  comments={100}
-                />
-              </Popup>
-            </Marker>
-          ))}
-        </MarkerClusterGroup>
+        > */}
+        {markers.map((marker) => (
+          <Marker
+            key={marker.id}
+            position={[marker.lat, marker.lng]}
+            icon={customIcon}
+          >
+            <Popup minWidth={250}>
+              <Cards
+                imageUrl={marker.imageUrl || "/dirtyImage.webp"}
+                description={marker.label}
+                likes={100}
+                comments={100}
+              />
+            </Popup>
+          </Marker>
+        ))}
+        {/* </MarkerClusterGroup> */}
         <ClickHandler markMode={markMode} onMarkerAdded={handleMarkerClick} />
       </MapContainer>
       <PinMarkerDialog
