@@ -11,7 +11,10 @@ import {
   Popup,
   useMapEvents,
 } from "react-leaflet";
-import { Icon, divIcon, point } from "leaflet";
+//removed cluster so removed the below line
+// import { Icon, divIcon, point } from "leaflet";
+import { Icon } from "leaflet";
+
 import { v4 as uuidv4 } from "uuid";
 // import MarkerClusterGroup from "react-leaflet-cluster";
 import Cards from "../Cards";
