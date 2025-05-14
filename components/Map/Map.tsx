@@ -162,7 +162,7 @@ export default function Map() {
       <MapContainer
         className="markercluster-map"
         center={userLocation ?? [22.5744, 88.3629]}
-        zoom={13}
+        zoom={16}
         scrollWheelZoom={true}
       >
         <TileLayer
