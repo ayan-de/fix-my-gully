@@ -29,7 +29,7 @@ const Sidenavbar = () => {
             <span>About</span>
           </Link>
           <Link
-            href="/login"
+            href="/auth/login"
             className="flex items-center gap-2 hover:text-yellow-300"
           >
             <LogIn size={20} />
@@ -67,7 +67,7 @@ const Sidenavbar = () => {
             <span>About</span>
           </Link>
           <Link
-            href="/login"
+            href="/auth/login"
             className="flex items-center gap-2 hover:text-yellow-300"
           >
             <LogIn size={20} />

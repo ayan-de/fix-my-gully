@@ -16,8 +16,8 @@ export const publicRoutes = [
  */
 
 export const authRotes = [
-    "/login",
-    "/register",
+    "/auth/login",
+    "/auth/register",
     "/error"
 ];
 

@@ -13,7 +13,7 @@ export const ErrorCard = () => {
         <TriangleAlert className="text-destructive" />
       </div>
       <CardFooter>
-        <BackButton label="Back to login" href="/login" />
+        <BackButton label="Back to login" href="/auth/login" />
       </CardFooter>
     </Card>
   );
