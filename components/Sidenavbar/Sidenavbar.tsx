@@ -35,6 +35,13 @@ const Sidenavbar = () => {
             <LogIn size={20} />
             <span>Login</span>
           </Link>
+          <Link
+            href="/settings"
+            className="flex items-center gap-2 hover:text-yellow-300"
+          >
+            <LogIn size={20} />
+            <span>Dashboard</span>
+          </Link>
         </nav>
       </div>
 
@@ -51,7 +58,7 @@ const Sidenavbar = () => {
 
       {/* Mobile Dropdown Menu */}
       {open && (
-        <div className="absolute z-52 top-16 left-0 w-full bg-gray-800 text-white p-4 flex flex-col gap-4  md:hidden">
+        <div className="absolute z-52 top-14 left-0 w-full bg-gray-800 text-white p-4 flex flex-row justify-evenly gap-4  md:hidden">
           <Link
             href="/about"
             className="flex items-center gap-2 hover:text-yellow-300"
@@ -65,6 +72,13 @@ const Sidenavbar = () => {
           >
             <LogIn size={20} />
             <span>Login</span>
+          </Link>
+          <Link
+            href="/settings"
+            className="flex items-center gap-2 hover:text-yellow-300"
+          >
+            <LogIn size={20} />
+            <span>Dashboard</span>
           </Link>
         </div>
       )}
