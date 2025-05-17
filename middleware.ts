@@ -9,6 +9,7 @@ import {
   publicRoutes,
 } from "@/routes";
 
+//this req makes out token accessible
 export default auth((req) => {
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
