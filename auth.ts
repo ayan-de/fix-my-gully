@@ -24,17 +24,17 @@ export const {
     },
   },
   callbacks: {
-    // async signIn({ user }) {
-    //   const existingUser = await getUserById(user.id);
+    async signIn({ user ,account }) {
+      //Allow OAuth without email verification
+    if(account?.provider !== "credentials") return true;
 
-     // if (!existingUser || !existingUser.emailVerified) {
-     //   return false;
-     // }
-    //   if (!existingUser) {
-    //     return false;
-    //   }
-    //   return true;
-    // },
+    const existingUser = await getUserById(user.id!);
+
+    //Preventing signin without email verification
+    if(!existingUser?.emailVerified) return false;
+    //TODO:Add 2FA check
+      return true;
+    },
     //this is the session getting shown in /settings route
     async session({ token, session }) {
       if (token.sub && session.user) {
