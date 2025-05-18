@@ -1,23 +1,17 @@
 "use client";
 
-import { useCurrentUser } from "@/hooks/use-current-user";
-// import { logout } from "@/actions/logout";
-import { signOut } from "next-auth/react";
+import { currentUser } from "@/lib/auth";
 
-const MarkingsPage = () => {
+const MarkingsPage = async () => {
   //using session in client component
-  const user = useCurrentUser();
-
-  const onClick = () => {
-    // logout();
-    signOut();
-  };
+  const user = await currentUser();
 
   return (
     <div className="bg-white p-10 rounded-xl">
-      <button className="cursor-pointer" onClick={onClick} type="submit">
+      {JSON.stringify(user)}
+      {/* <button className="cursor-pointer" onClick={onClick} type="submit">
         Sign out
-      </button>
+      </button> */}
     </div>
   );
 };
