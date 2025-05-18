@@ -26,6 +26,7 @@ export const newVerification = async(token:string) => {
     await db.user.update({
         where:{id: existingUser.id},
         data:{
+            //means today i verified this
             emailVerified:new Date(),
             email:existingToken.email
         }
