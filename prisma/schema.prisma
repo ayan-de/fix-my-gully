@@ -24,6 +24,7 @@ model User {
   password      String?
   accounts      Account[]
   role          UserRole  @default(USER)
+  markers       Marker[]
 
   @@map("users")
 }
@@ -55,4 +56,19 @@ model VerificationToken {
   expires DateTime
 
   @@unique([email, token])
+}
+
+model Marker {
+  id        String   @id @default(cuid())
+  latitude  Float
+  longitude Float
+  label     String?
+  imageUrl  String?
+  createdAt DateTime @default(now())
+
+  // Relationship
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("markers")
 }
