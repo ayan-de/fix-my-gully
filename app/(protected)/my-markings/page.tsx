@@ -4,7 +4,7 @@ import { useCurrentUser } from "@/hooks/use-current-user";
 // import { logout } from "@/actions/logout";
 import { signOut } from "next-auth/react";
 
-const SettingPage = () => {
+const MarkingsPage = () => {
   //using session in client component
   const user = useCurrentUser();
 
@@ -22,4 +22,4 @@ const SettingPage = () => {
   );
 };
 
-export default SettingPage;
+export default MarkingsPage;
