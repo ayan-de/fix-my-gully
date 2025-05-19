@@ -17,6 +17,7 @@ export default {
       clientSecret:process.env.GITHUB_CLIENT_SECRET,
     }),
     Credentials({
+      //The authorize function handles the custom login logic and determines whether the credentials provided are valid.
         async authorize(credentials){
             const validatedFields = LoginSchema.safeParse(credentials)
             

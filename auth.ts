@@ -11,10 +11,13 @@ export const {
   signIn,
   signOut,
 } = NextAuth({
+  ///api/auth/signin(default) → redirects to /auth/login (my custom page)
   pages:{
     signIn:"/auth/login",
     error:"/auth/error",
   },
+  //Sent when an account in a given provider is linked to a user in our user database. 
+  //For example, when a user signs up with Twitter or when an existing user links their Google account.
   events:{
     async linkAccount({user}) {
         await db.user.update({
@@ -24,6 +27,9 @@ export const {
     },
   },
   callbacks: {
+    //Using the signIn() method ensures the user ends back on the page they started on after completing a sign in flow. 
+    //It will also handle CSRF Tokens for you automatically when signing in with email.
+
     async signIn({ user ,account }) {
       //Allow OAuth without email verification
     if(account?.provider !== "credentials") return true;
@@ -57,6 +63,7 @@ export const {
       return token
     },
   },
+  //telling auth.ts that we are using prismaadapter, passing the db file containing instances of PrismaClient 
   adapter: PrismaAdapter(db),
   session: { strategy: "jwt" },
   ...authConfig,

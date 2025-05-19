@@ -10,9 +10,14 @@ import {
 } from "@/routes";
 
 //this req makes out token accessible
-export default auth((req) => {
+//A universal method to interact with NextAuth.js in your Next.js app. 
+// After initializing NextAuth.js in auth.ts, use this method in Middleware,
+//  Server Components, Route Handlers (app/), and Edge or Node.js API Routes (pages/).
+export default auth((req) => {  
   const { nextUrl } = req;
   const isLoggedIn = !!req.auth;
+  console.log(req.auth);
+  
 
   const isApiAuthRoute = nextUrl.pathname.startsWith(apiAuthPrefix);
   const isPublicRoute = publicRoutes.includes(nextUrl.pathname);
