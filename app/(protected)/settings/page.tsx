@@ -6,7 +6,7 @@ import { signOut } from "next-auth/react";
 
 const SettingPage = () => {
   //using session in client component
-  const user = useCurrentUser();
+  const _user = useCurrentUser();
 
   const onClick = () => {
     // logout();
