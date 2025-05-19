@@ -1,5 +1,3 @@
-"use client";
-
 import { currentUser } from "@/lib/auth";
 
 const MarkingsPage = async () => {
