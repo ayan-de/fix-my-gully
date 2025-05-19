@@ -4,6 +4,7 @@ import { Info, LogIn, Menu } from "lucide-react"; // You can swap icons
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { LoginButton } from "@/components/auth/login-button";
 
 const Sidenavbar = () => {
   //hooks to track navbar
@@ -28,13 +29,18 @@ const Sidenavbar = () => {
             <Info size={20} />
             <span>About</span>
           </Link>
-          <Link
+          {/* <Link
             href="/auth/login"
             className="flex items-center gap-2 hover:text-yellow-300"
-          >
+          > */}
+          <div className="flex items-center gap-2 hover:text-yellow-300">
             <LogIn size={20} />
-            <span>Login</span>
-          </Link>
+            {/* <LoginButton mode="modal" asChild> */}
+            <LoginButton>
+              <span>Login</span>
+            </LoginButton>
+          </div>
+          {/* </Link> */}
           <Link
             href="/settings"
             className="flex items-center gap-2 hover:text-yellow-300"
