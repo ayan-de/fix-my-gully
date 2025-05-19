@@ -14,8 +14,12 @@ const SettingPage = () => {
   };
 
   return (
-    <div className="bg-white p-10 rounded-xl">
-      <button className="cursor-pointer" onClick={onClick} type="submit">
+    <div className="bg-white p-0 rounded-xl">
+      <button
+        className="cursor-pointer bg-black text-white px-4 py-2 rounded-md hover:text-yellow-500 transition-colors duration-200"
+        onClick={onClick}
+        type="submit"
+      >
         Sign out
       </button>
     </div>
