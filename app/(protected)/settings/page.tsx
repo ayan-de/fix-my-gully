@@ -6,6 +6,7 @@ import { signOut } from "next-auth/react";
 
 const SettingPage = () => {
   //using session in client component
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const _user = useCurrentUser();
 
   const onClick = () => {
