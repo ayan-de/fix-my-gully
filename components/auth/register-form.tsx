@@ -38,6 +38,7 @@ export const RegisterForm = () => {
     setError("");
     setSuccess("");
     startTransition(() => {
+      //calling server action register.ts to handle register functionality
       register(values).then((data) => {
         setError(data.error);
         setSuccess(data.success);
