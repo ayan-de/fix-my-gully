@@ -129,6 +129,30 @@ export default function Map() {
     }
   }, []);
 
+  //fetching all markers from /api/markers route and displaying on map
+  useEffect(() => {
+    const fetchMarkers = async () => {
+      try {
+        const res = await fetch("/api/markers");
+        if (!res.ok) throw new Error("Failed to fetch markers");
+        const data = await res.json();
+        setMarkers(
+          data.map((m: any) => ({
+            id: m.id,
+            lat: m.latitude,
+            lng: m.longitude,
+            label: m.label,
+            imageUrl: m.imageUrl || null,
+          }))
+        );
+      } catch (err) {
+        console.error("Error fetching markers:", err);
+      }
+    };
+
+    fetchMarkers();
+  }, []);
+
   return (
     <div className={"flex-1 md:ml-64 overflow-hidden border absolute inset-0"}>
       {/* Mark Button */}
