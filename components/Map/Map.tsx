@@ -18,7 +18,7 @@ import { Icon } from "leaflet";
 import { v4 as uuidv4 } from "uuid";
 // import MarkerClusterGroup from "react-leaflet-cluster";
 import Cards from "../Cards";
-import PinMarkerDialog from "@/components/PinMarkerDialog";
+// import PinMarkerDialog from "@/components/PinMarkerDialog";
 import PinPopup from "../PinMarkerDialog/PinPopup";
 // interface Cluster {
 //   getChildCount: () => number;
@@ -105,6 +105,14 @@ export default function Map() {
     setMarkMode(false);
   };
 
+  type Marker = {
+    id: string;
+    latitude: number;
+    longitude: number;
+    label: string;
+    imageUrl?: string | null;
+  };
+
   const toggleMarkMode = () => {
     setMarkMode((prev) => {
       const next = !prev;
@@ -137,7 +145,7 @@ export default function Map() {
         if (!res.ok) throw new Error("Failed to fetch markers");
         const data = await res.json();
         setMarkers(
-          data.map((m: any) => ({
+          data.map((m: Marker) => ({
             id: m.id,
             lat: m.latitude,
             lng: m.longitude,

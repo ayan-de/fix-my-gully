@@ -1,7 +1,7 @@
 "use client";
 
 import * as z from "zod";
-import { useEffect, useState, useTransition } from "react";
+import { useEffect } from "react";
 import { CardWrapper } from "@/components/auth/card-wrapper";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -16,12 +16,8 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { FormError } from "@/components/form-error";
-import { FormSuccess } from "@/components/form-success";
 import { addMarker } from "@/actions/add-Marker";
-import { Label } from "@/components/ui/label";
 
 interface PinMarkerFormProps {
   label: string;
@@ -38,11 +34,11 @@ export const PinMarkerForm = ({
   setSelectedFile,
   latitude,
   longitude,
-  previewUrl,
+  // previewUrl,
 }: PinMarkerFormProps) => {
-  const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
-  const [isPending, startTransition] = useTransition();
+  // const [error, setError] = useState<string | undefined>("");
+  // const [success, setSuccess] = useState<string | undefined>("");
+  // const [isPending, startTransition] = useTransition();
 
   const form = useForm<z.infer<typeof MarkerSchema>>({
     resolver: zodResolver(MarkerSchema),

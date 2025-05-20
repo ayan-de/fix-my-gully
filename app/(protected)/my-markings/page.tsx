@@ -1,6 +1,7 @@
 import { currentUser } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { User } from "next-auth";
+import Image from "next/image";
 
 const MarkingsPage = async () => {
   //using session in client component
@@ -43,7 +44,7 @@ const MarkingsPage = async () => {
                 <strong>Longitude:</strong> {marker.longitude}
               </div>
               {marker.imageUrl && (
-                <img
+                <Image
                   src={marker.imageUrl}
                   alt="Marker"
                   className="w-32 h-32 object-cover mt-2 rounded"
