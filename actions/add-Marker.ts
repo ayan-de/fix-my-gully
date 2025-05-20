@@ -6,8 +6,10 @@ import { currentUser } from "@/lib/auth";
 import { MarkerSchema } from "@/schemas";
 
 export const addMarker = async (values: z.infer<typeof MarkerSchema>) => {
-  const validated = MarkerSchema.safeParse(values);
-  if (!validated.success) {
+  const validatedFields = MarkerSchema.safeParse(values);
+  if (!validatedFields.success) {
+    console.log("invalid marker data");
+    
     return { error: "Invalid marker data!" };
   }
 
@@ -16,14 +18,16 @@ export const addMarker = async (values: z.infer<typeof MarkerSchema>) => {
     return { error: "Not logged in or user ID missing." };
   }
 
-  const { latitude, longitude, label, imageUrl } = validated.data;
+  // const { latitude, longitude, label, imageUrl } = validatedFields.data;
+    const { latitude, longitude, label } = validatedFields.data;
+
 
   await db.marker.create({
     data: {
       latitude,
       longitude,
       label,
-      imageUrl,
+      // imageUrl: imageUrl === "" ? null : imageUrl, // handle empty string
       userId: user.id,
     },
   });

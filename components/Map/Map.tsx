@@ -19,7 +19,7 @@ import { v4 as uuidv4 } from "uuid";
 // import MarkerClusterGroup from "react-leaflet-cluster";
 import Cards from "../Cards";
 import PinMarkerDialog from "@/components/PinMarkerDialog";
-
+import PinPopup from "../PinMarkerDialog/PinPopup";
 // interface Cluster {
 //   getChildCount: () => number;
 // }
@@ -199,11 +199,19 @@ export default function Map() {
         {/* </MarkerClusterGroup> */}
         <ClickHandler markMode={markMode} onMarkerAdded={handleMarkerClick} />
       </MapContainer>
-      <PinMarkerDialog
+      {/* <PinMarkerDialog
         open={dialogOpen}
         onClose={() => setDialogOpen(false)}
         onSave={handleDialogSave}
-      />
+      /> */}
+      <PinPopup
+        open={dialogOpen}
+        onClose={() => setDialogOpen(false)}
+        onSave={handleDialogSave}
+        coords={pendingCoords}
+      >
+        <button style={{ display: "none" }} /> {/* Invisible trigger */}
+      </PinPopup>
     </div>
   );
 }

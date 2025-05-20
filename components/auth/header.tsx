@@ -18,8 +18,8 @@ export const Header = ({ label }: HeaderProps) => {
       <h1 className={cn("text-3xl font-semibold", font.className)}>
         <Image
           src="/marker.png"
-          width={150}
-          height={150}
+          width={100}
+          height={100}
           alt="Logo picure"
           style={{ display: "block", margin: "0 auto" }}
         />

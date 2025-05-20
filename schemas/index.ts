@@ -25,5 +25,5 @@ export const MarkerSchema = z.object({
   latitude: z.number().min(-90).max(90),
   longitude: z.number().min(-180).max(180),
   label: z.string().optional(),
-  imageUrl: z.string().url().nullable().optional(),
+//   imageUrl: z.string().url().nullable().optional(),
 });

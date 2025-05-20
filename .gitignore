@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+#ignore all txt file
+*.txt
+
 # production
 /build
 
